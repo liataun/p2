@@ -20,15 +20,14 @@ require 'logic.php';
 </head>
 
 <body class='p-5'>
-<h1>APA References</h1>
-<p>
+<h1 class='text-primary'>APA References</h1>
+<p class='text-info'>
     This site attempts to use the information you provide to create an APA style reference entry.
     Features are limited to single authors and organizations with all information available. Books
     published before 1000 A.D. will not be accepted.
 </p>
-<?= sanitize($notSet = "<h1>this is html sanitized</h1>") ?>
-<h3>Book Citation Form</h3>
-<form method='get' action='citation.php'>
+<h3 class='text-secondary'>Book Citation Form</h3>
+<form class='text-dark' method='get' action='citation.php'>
 
     <div class="form-group">
         <label for='authorType'>Author Type</label>
@@ -85,8 +84,8 @@ require 'logic.php';
             </ul>
         </div>
     <?php endif ?>
-    <?php if ($citation): ?>
-        <?= $citation ?>
+    <?php if (isset($citation)): ?>
+        <p class='text-success'><?= $citation ?></p>
     <?php endif ?>
 </form>
 </body>

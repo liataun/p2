@@ -24,4 +24,4 @@ Hacker, D. (2004). *A Pocket Style Manual Fourth Edition.* Boston: Bedford.
 *List any divergences from PSR-1/PSR-2 and course guidelines on code style*
 
 ## Notes for instructor
-*Any notes for me to refer to while grading; if none, omit this section*
+I liked the way bootstrap's warnings look in your lecture/notes, so I am trying to make use of it for my project. However, I have never used this framework myself. I have attempted to restrict my use of the Bootstrap documentation to looking up class names to get approximately the styling I am thinking of.
