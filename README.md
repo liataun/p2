@@ -7,6 +7,7 @@ Project 2 for CSciE15 - Form use and validation in PHP
 [Bootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 [Bootstrap Forms classes](https://getbootstrap.com/docs/4.0/components/forms/)
 [Bootstrap Spacing](https://getbootstrap.com/docs/4.0/utilities/spacing/)
+[Bootstrap Colors](https://getbootstrap.com/docs/4.0/utilities/colors/)
 Hacker, D. (2004). *A Pocket Style Manual Fourth Edition.* Boston: Bedford.
 [w3schools html syntax](https://www.w3schools.com/html/html_form_input_types.asp)
 [w3schools length guidance](https://www.w3schools.com/html/html5_syntax.asp)
@@ -15,13 +16,13 @@ Hacker, D. (2004). *A Pocket Style Manual Fourth Edition.* Boston: Bedford.
 ## 3 Unique inputs
 1. Select input to indicate type of author entry
 2. Text input to indicate author name
-3. Dropdown to indicate what symbol to include
+3. Checkbox to indicate desire for in-text style citation
 
 ## Class
 `Form.php`, ` `, and ` `.
 
 ## Code style divergences
-*List any divergences from PSR-1/PSR-2 and course guidelines on code style*
+Using a number of divs in order to try out Bootstrap input styling.
 
 ## Notes for instructor
 I liked the way bootstrap's warnings look in your lecture/notes, so I am trying to make use of it for my project. However, I have never used this framework myself. I have attempted to restrict my use of the Bootstrap documentation to looking up class names to get approximately the styling I am thinking of.

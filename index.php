@@ -26,12 +26,12 @@ require 'logic.php';
     Features are limited to single authors and organizations with all information available. Books
     published before 1000 A.D. will not be accepted.
 </p>
-<h3 class='text-secondary'>Book Citation Form</h3>
+<h4 class='text-secondary'>Book Citation Form</h4>
 <form class='text-dark' method='get' action='citation.php'>
 
     <div class="form-group">
         <label for='authorType'>Author Type</label>
-        <select class='form-control' name='authorType'>
+        <select class='form-control' id='authorType' name='authorType'>
             <option value='single'>Single Author</option>
             <option value='organization'>Organization As Author</option>
         </select>
@@ -39,13 +39,15 @@ require 'logic.php';
 
     <div class="form-group">
         <label for='authorLast'>Enter author last name or organization name.</label>
-        <input type=text' class='form-control' name='authorLast' value='<?= sanitize($authorLast ?? 'John') ?>'>
+        <input type='text' class='form-control' id='authorLast' name='authorLast'
+               value='<?= sanitize($authorLast ?? 'Snow') ?>'>
     </div>
 
     <div class="form-group">
         <label for='authorInitials' id='authorInitialsLabel'>Enter author initials.</label>
-        <input type=text' class='form-control' aria-describedby='authorInitialsLabel authorInitialsInfo'
-               name='authorInitials' value='<?= sanitize($authorInitials ?? 'Snow') ?>'>
+        <input type='text' class='form-control' id='authorInitials' name='authorInitials'
+               value='<?= sanitize($authorInitials ?? 'J.') ?>'
+               aria-describedby='authorInitialsLabel authorInitialsInfo'>
         <small class='form-text text-muted' id='authorInitialsInfo'>
             Required, unless Author Type is 'Organization As Author'.
         </small>
@@ -53,40 +55,50 @@ require 'logic.php';
 
     <div class="form-group">
         <label for='year' id='yearLabel'>Enter year of publication.</label>
-        <input type='number' class='form-control' aria-describedby='yearLabel yearInfo'
-               name='year' value='<?= sanitize($year ?? 2018) ?>'>
+        <input type='number' class='form-control' id='year' name='year'
+        value='<?= sanitize($year ?? 2018) ?>' aria-describedby='yearLabel yearInfo' >
         <small class='form-text text-muted' id='yearInfo'>Four digit year ex. 2019.</small>
     </div>
 
     <div class="form-group">
+        <label for='title'>Enter book title.</label>
+        <input type='text' class='form-control' id='title' name='title'
+               value='<?= sanitize($title ?? 'The Icy Bite of Love') ?>'>
+    </div>
+
+    <div class="form-group">
         <label for='city'>Enter publication city.</label>
-        <input type='text' class='form-control' name='city' value='<?= sanitize($city ?? 'Winterfell') ?>'>
+        <input type='text' class='form-control' id='city' name='city' value='<?= sanitize($city ?? 'Winterfell') ?>'>
     </div>
 
     <div class="form-group">
         <label for='publisher'>Enter publisher name.</label>
-        <input type='text' class='form-control' name='publisher' value='<?= sanitize($publisher ?? 'The North') ?>'>
+        <input type='text' class='form-control' id='publisher' name='publisher'
+        value='<?= sanitize($publisher ?? 'The Wall') ?>'>
     </div>
 
     <div class="form-group">
         <label for='publisher'>Include in-text citation?</label>
-        <input type='checkbox' class='form-check' name='intext'
+        <input type='checkbox' class='form-check' id='intext' name='intext'
             <?php if (isset($intext) and $intext) echo 'checked' ?>>
     </div>
 
     <input type='submit' class='btn btn-primary' name='cite' value='Generate Citation'>
-    <?php if ($hasErrors): ?>
-        <div class='alert alert-danger' id='errors'>
-            <ul>
-                <?php foreach ($errors as $error): ?>
-                    <li><?= $error ?></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    <?php endif ?>
-    <?php if (isset($citation)): ?>
-        <p class='text-success'><?= $citation ?></p>
-    <?php endif ?>
 </form>
+<?php if ($hasErrors): ?>
+    <div class='alert alert-danger' id='errors'>
+        <ul>
+            <?php foreach ($errors as $error): ?>
+                <li><?= $error ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif ?>
+<?php if (isset($citation)): ?>
+    <?= $citation ?>
+<?php endif ?>
+<?php if (!isset($citation) and !$hasErrors): ?>
+    <p class='invisible'>Waiting for form submission!</p>
+<?php endif ?>
 </body>
 </html>

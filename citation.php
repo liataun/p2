@@ -19,8 +19,7 @@ if ($form->isSubmitted()) {
                 'publisher' => 'required',
             ]
         );
-    }
-    else {
+    } else {
         $errors = $form->validate(
             [
                 'authorType' => 'required',
@@ -35,10 +34,24 @@ if ($form->isSubmitted()) {
 }
 
 if (!$form->hasErrors) {
-    $citation = '<h1>It worked</h1>';
-    if ($form->get('intext')) {
-        $citation .= '<p>in text citation here</p>';
+    $authorType = $form->get('authorType') ?? null;
+    $authorLast = $form->get('authorLast') ?? null;
+    $authorInitials = $form->get('authorInitials') ?? null;
+    $year = $form->get('year') ?? null;
+    $title = $form->get('title') ?? null;
+    $city = $form->get('city') ?? null;
+    $publisher = $form->get('publisher') ?? null;
+
+    $citation = '<p class=\'text-success\'>'.$authorLast;
+    if ($authorType = 'single') {
+        $citation .= ', ' . $authorInitials;
     }
+    $citation .= '('.$year.") . <span id='italics'>".$title.'.</span> '.$city.': '.$publisher.'.';
+
+    if ($form->get('intext')) {
+        $citation .= '</p><p>'.$authorLast.' ('.$year.')';
+    }
+    $citation .= '</p>';
 }
 
 //Store results in the session
@@ -49,6 +62,7 @@ $_SESSION['results'] = [
     'authorType' => $form->get('authorType') ?? null,
     'authorLast' => $form->get('authorLast') ?? null,
     'authorInitials' => $form->get('authorInitials') ?? null,
+    'title' => $form->get('title') ?? null,
     'year' => $form->get('year') ?? null,
     'city' => $form->get('city') ?? null,
     'publisher' => $form->get('publisher') ?? null,

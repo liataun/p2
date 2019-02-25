@@ -5,3 +5,7 @@ input, select {
 #errors {
     max-width: 600px;
 }
+
+#italics {
+    font-style: italic;
+}
