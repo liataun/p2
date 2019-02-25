@@ -1,20 +1,24 @@
 # Project 2
-+ By: *your first and last name*
++ By: Brian Twitchell
 + Production URL: (http://p2.twitchell.com)
 Project 2 for CSciE15 - Form use and validation in PHP
 
 ## Outside resources
 [Bootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
+[Bootstrap Forms classes](https://getbootstrap.com/docs/4.0/components/forms/)
+[Bootstrap Spacing](https://getbootstrap.com/docs/4.0/utilities/spacing/)
+Hacker, D. (2004). *A Pocket Style Manual Fourth Edition.* Boston: Bedford.
+[w3schools html syntax](https://www.w3schools.com/html/html_form_input_types.asp)
+[w3schools length guidance](https://www.w3schools.com/html/html5_syntax.asp)
+[aria-labelledby for multiple nodes](https://www.w3.org/WAI/GL/wiki/Using_aria-labelledby_to_concatenate_a_label_from_several_text_nodes)
 
 ## 3 Unique inputs
-*You don't have to list all inputs, just 3 unique ones. The following is an example of what I'd put if my project was the xkcd Password Generator:*
-
-1. *Text input to indicate number of words in password*
-2. *Checkbox to indicate whether to include a number*
-3. *Dropdown to indicate what symbol to include*
+1. Select input to indicate type of author entry
+2. Text input to indicate author name
+3. Dropdown to indicate what symbol to include
 
 ## Class
-*List the name of the class(es) you're using, e.g. `Form.php`, `Password.php`, etc.*
+`Form.php`, ` `, and ` `.
 
 ## Code style divergences
 *List any divergences from PSR-1/PSR-2 and course guidelines on code style*

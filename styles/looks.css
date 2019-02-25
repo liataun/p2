@@ -1,0 +1,7 @@
+input, select {
+    max-width: 400px;
+}
+
+#errors {
+    max-width: 600px;
+}
