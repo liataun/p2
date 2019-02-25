@@ -20,13 +20,18 @@ require 'logic.php';
 </head>
 
 <body class='p-5'>
-<h1 class='text-primary'>APA References</h1>
+<header>
+    <!-- You know, in case I forget to make it a link when there are more pages... -->
+    <h1 class='text-primary'><a href='index.php'>APA References</a></h1>
+</header>
+
 <p class='text-info'>
     This site attempts to use the information you provide to create an APA style reference entry.
     Features are limited to single authors and organizations with all information available. Books
     published before 1000 A.D. will not be accepted.
 </p>
 <h4 class='text-secondary'>Book Citation Form</h4>
+
 <form class='text-dark' method='get' action='citation.php'>
 
     <div class="form-group">
@@ -56,7 +61,7 @@ require 'logic.php';
     <div class="form-group">
         <label for='year' id='yearLabel'>Enter year of publication.</label>
         <input type='number' class='form-control' id='year' name='year'
-        value='<?= sanitize($year ?? 2018) ?>' aria-describedby='yearLabel yearInfo' >
+               value='<?= sanitize($year ?? 2018) ?>' aria-describedby='yearLabel yearInfo'>
         <small class='form-text text-muted' id='yearInfo'>Four digit year ex. 2019.</small>
     </div>
 
@@ -74,7 +79,7 @@ require 'logic.php';
     <div class="form-group">
         <label for='publisher'>Enter publisher name.</label>
         <input type='text' class='form-control' id='publisher' name='publisher'
-        value='<?= sanitize($publisher ?? 'The Wall') ?>'>
+               value='<?= sanitize($publisher ?? 'The Wall') ?>'>
     </div>
 
     <div class="form-group">
@@ -85,6 +90,8 @@ require 'logic.php';
 
     <input type='submit' class='btn btn-primary' name='cite' value='Generate Citation'>
 </form>
+
+<!-- Display errors -->
 <?php if ($hasErrors): ?>
     <div class='alert alert-danger' id='errors'>
         <ul>
@@ -94,11 +101,14 @@ require 'logic.php';
         </ul>
     </div>
 <?php endif ?>
+
+<!-- Display completed Reference -->
 <?php if (isset($citation)): ?>
     <?= $citation ?>
 <?php endif ?>
 <?php if (!isset($citation) and !$hasErrors): ?>
     <p class='invisible'>Waiting for form submission!</p>
 <?php endif ?>
+
 </body>
 </html>
