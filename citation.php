@@ -1,5 +1,5 @@
 <?php
-require('Form.php');
+require 'Form.php';
 
 use DWA\Form;
 
@@ -7,16 +7,18 @@ session_start();
 $form = new Form($_GET);
 
 //Run validations
-
+//Pick correct set based on Select element
 if ($form->isSubmitted()) {
-    if (!$form->get('intext')) {
+    if ($form->get('authorType') == 'organization') {
         $errors = $form->validate(
             [
                 'authorType' => 'required',
                 'authorLast' => 'required',
+                'authorInitials' => 'maxLength:0',
                 'year' => 'required|digit|minLength:4|maxLength:4',
                 'city' => 'required',
                 'publisher' => 'required',
+                'userEmail' => 'required|email',
             ]
         );
     } else {
@@ -28,28 +30,37 @@ if ($form->isSubmitted()) {
                 'year' => 'required|digit|minLength:4|maxLength:4',
                 'city' => 'required',
                 'publisher' => 'required',
+                'userEmail' => 'required|email',
             ]
         );
     }
 }
 
+//setup values submitted by user to return to our index page
+$authorType = $form->get('authorType') ?? null;
+$authorLast = $form->get('authorLast') ?? null;
+$authorInitials = $form->get('authorInitials') ?? null;
+$title = $form->get('title') ?? null;
+$year = $form->get('year') ?? null;
+$city = $form->get('city') ?? null;
+$publisher = $form->get('publisher') ?? null;
+$intext = $form->get('intext') ?? null;
+$userEmail = $form->get('userEmail') ?? null;
+
+//compose our result citation string
 if (!$form->hasErrors) {
-    $authorType = $form->get('authorType') ?? null;
-    $authorLast = $form->get('authorLast') ?? null;
-    $authorInitials = $form->get('authorInitials') ?? null;
-    $year = $form->get('year') ?? null;
-    $title = $form->get('title') ?? null;
-    $city = $form->get('city') ?? null;
-    $publisher = $form->get('publisher') ?? null;
-
-    $citation = '<p class=\'text-success\'>'.$authorLast;
-    if ($authorType = 'single') {
-        $citation .= ', ' . $authorInitials;
+    //Would like to avoid inserting the html here in the logic.
+    //Not sure how currently. Consider for future refactoring.
+    $citation = '<p class=\'text-success\'>' . $authorLast;
+    if ($authorType == 'single') {
+        $citation .= ', ' . $authorInitials . ' ';
+    } else {
+        $citation .= '. ';
     }
-    $citation .= '('.$year.") . <span id='italics'>".$title.'.</span> '.$city.': '.$publisher.'.';
+    $citation .= '(' . $year . "). <span id='italics'>" . $title . '.</span> ' . $city . ': ' . $publisher . '.';
 
-    if ($form->get('intext')) {
-        $citation .= '</p><p>'.$authorLast.' ('.$year.')';
+    if ($intext) {
+        $citation .= '</p><p>' . $authorLast . ' (' . $year . ')';
     }
     $citation .= '</p>';
 }
@@ -59,29 +70,16 @@ $_SESSION['results'] = [
     'errors' => $errors,
     'hasErrors' => $form->hasErrors,
     'citation' => $citation,
-    'authorType' => $form->get('authorType') ?? null,
-    'authorLast' => $form->get('authorLast') ?? null,
-    'authorInitials' => $form->get('authorInitials') ?? null,
-    'title' => $form->get('title') ?? null,
-    'year' => $form->get('year') ?? null,
-    'city' => $form->get('city') ?? null,
-    'publisher' => $form->get('publisher') ?? null,
-    'intext' => $form->get('intext') ?? null,
+    'authorType' => $authorType,
+    'authorLast' => $authorLast,
+    'authorInitials' => $authorInitials,
+    'title' => $title,
+    'year' => $year,
+    'city' => $city,
+    'publisher' => $publisher,
+    'intext' => $intext,
+    'userEmail' => $userEmail,
 ];
 
 //Redirect back form
 header('Location: index.php');
-
-/*
-#tertiary operator
-$action = (!isset($_POST['action'])) ? 'default' : $_POST['action'];
-$prefix = ($total > 0) ? '+' : '-';
-
-
-#Null Coalescing Operator
-$action = $_POST['action'] ?? 'default';
-
-#or for display file
-<input type='text' name='searchTerm' value='<?= $searchTerm ?? '' ?>'>
-
-*/
