@@ -14,9 +14,12 @@ if (isset($_SESSION['results'])) {
     extract($results);
 }
 
-//Setup variable so that we can set selected on the element on first load
-//and still retrieve user value after returning from submission
-if (isset($authorType)) {
+/*
+ * Setup variable so that we can set selected on the element on first load
+ * and still retrieve user value after returning from submission
+ * only allow valid selection values
+*/
+if (isset($authorType) and ($authorType == 'single' or $authorType == 'organization')) {
     $selected = $authorType;
 } else {
     $selected = 'single';

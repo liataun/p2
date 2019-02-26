@@ -30,4 +30,3 @@ Project 2 for CSciE15 - Form use and validation in PHP
 ## Notes for instructor
 * I liked the way bootstrap's warnings look in your lecture/notes, so I am trying to make use of it for my project. However, I have never used this framework myself. I have attempted to restrict my use of the Bootstrap documentation to looking up class names to get approximately the styling I am thinking of.
 * I included a number of unnecessary features to practice site construction concepts including a `p` element that should never show, but will conditionally appear on the page.
-

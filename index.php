@@ -38,8 +38,8 @@ require 'logic.php';
     <div class="form-group">
         <label for='authorType'>Select Author Type</label>
         <select class='form-control' id='authorType' name='authorType'>
-            <option value='single' <?= ($selected == 'single') ? ('selected') : null; ?>>Single Author
-            </option>
+            <!-- Any changes to logic.php must ensure that one and only one option is selected -->
+            <option value='single' <?= ($selected == 'single') ? ('selected') : null; ?>>Single Author</option>
             <option value='organization' <?= ($selected == 'organization') ? ('selected') : null; ?>>Organization As Author</option>
         </select>
     </div>
@@ -93,8 +93,12 @@ require 'logic.php';
 
     <div class="form-group">
         <label for='userEmail' id='userEmailLabel'>What email do you wish we could send this to?</label>
-        <input type='email' class='form-control' id='userEmail' name='userEmail'
-               aria-describedby='userEmailLabel userEmailInfo' value='<?= sanitize($userEmail ?? 'You@Education.me') ?>'>
+        <input type='email'
+               class='form-control'
+               id='userEmail'
+               name='userEmail'
+               aria-describedby='userEmailLabel userEmailInfo'
+               value='<?= sanitize($userEmail ?? 'You@Education.me') ?>'>
         <small class='form-text text-muted' id='userEmailInfo'>Must be a valid email. Email will NOT be sent.</small>
     </div>
 
