@@ -51,18 +51,7 @@ $userEmail = $form->get('userEmail') ?? null;
 if (!$form->hasErrors) {
     //Would like to avoid inserting the html here in the logic.
     //Not sure how currently. Consider for future refactoring.
-    $citation = '<p class=\'text-success\'>' . $authorLast;
-    if ($authorType == 'single') {
-        $citation .= ', ' . $authorInitials . ' ';
-    } else {
-        $citation .= '. ';
-    }
-    $citation .= '(' . $year . "). <span id='italics2'>" . $title . '.</span> ' . $city . ': ' . $publisher . '.';
-
-    if ($intext) {
-        $citation .= '</p><p>' . $authorLast . ' (' . $year . ')';
-    }
-    $citation .= '</p>';
+    $citation = true;
 }
 
 //Store results in the session
