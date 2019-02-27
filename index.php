@@ -120,11 +120,11 @@ require 'logic.php';
 <?php if (isset($citation)): ?>
     <?= $citation ?>
     <p>Building alternative way of building citation:</p>
-    <p class='text-success'><?=$authorLast?>
-    <?php if ($authorType == 'single'): ?>, <?= $authorInitials ?>
-    <?php else: ?>.
-    <?php endif ?>
+    <p class='text-success'><?= $authorLast ?><?php if ($authorType == 'single'): ?>, <?= $authorInitials ?><?php else: ?>. <?php endif ?>(<?= $year ?>).
+    <span id='italics'><?= $title ?>.</span> <?= $city ?>: <?= $publisher ?>.</p><?php endif ?>
 
+<?php if (isset($intext)): ?>
+    <p><?= $authorLast ?> (<?= $year ?>)</p>
 <?php endif ?>
 
 <!-- Learning how to hide/show elements. Might be needed for a more complete citation generator. -->
