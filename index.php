@@ -119,6 +119,12 @@ require 'logic.php';
 <!-- Display completed Reference -->
 <?php if (isset($citation)): ?>
     <?= $citation ?>
+    <p>Building alternative way of building citation:</p>
+    <p class='text-success'><?=$authorLast?>
+    <?php if ($authorType == 'single'): ?>, <?= $authorInitials ?>
+    <?php else: ?>.
+    <?php endif ?>
+
 <?php endif ?>
 
 <!-- Learning how to hide/show elements. Might be needed for a more complete citation generator. -->

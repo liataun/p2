@@ -57,7 +57,7 @@ if (!$form->hasErrors) {
     } else {
         $citation .= '. ';
     }
-    $citation .= '(' . $year . "). <span id='italics'>" . $title . '.</span> ' . $city . ': ' . $publisher . '.';
+    $citation .= '(' . $year . "). <span id='italics2'>" . $title . '.</span> ' . $city . ': ' . $publisher . '.';
 
     if ($intext) {
         $citation .= '</p><p>' . $authorLast . ' (' . $year . ')';
