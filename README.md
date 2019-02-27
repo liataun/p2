@@ -29,4 +29,4 @@ Project 2 for CSciE15 - Form use and validation in PHP
 ## Notes for instructor
 * I liked the way bootstrap's warnings look in your lecture/notes, so I am trying to make use of it for my project. However, I have never used this framework myself. I have attempted to restrict my use of the Bootstrap documentation to looking up class names to get approximately the styling I am thinking of.
 * I included a number of unnecessary features to practice site construction concepts including a `p` element that should never show, but will conditionally appear on the page.
-* I was uncertain as to how best to construct the citation and maintain italics for the title. Per our discussion on Slack, I have moved it to the display file, but I'm having trouble getting the code and resulting HTML as clean as I would like it to be.
+* I was uncertain as to how best to construct the citation and maintain italics for the title. Per our discussion on Slack, I have moved it to the display file and switched to ternary operator to do the if-else on author initials.

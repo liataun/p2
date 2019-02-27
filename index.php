@@ -118,8 +118,11 @@ require 'logic.php';
 
 <!-- Display completed Reference -->
 <?php if (isset($citation)): ?>
-    <p class='text-success'><?= $authorLast ?><?php if ($authorType == 'single'): ?>, <?= $authorInitials ?><?php else: ?>.<?php endif ?> (<?= $year ?>).
-        <span id='italics'><?= $title ?>.</span> <?= $city ?>: <?= $publisher ?>.</p>
+    <p class='text-success'><?= $authorLast ?><?= ($authorType == 'single') ? ', ' . $authorInitials : '.' ?>
+        (<?= $year ?>).
+        <span id='italics'><?= $title ?>.</span>
+        <?= $city ?>: <?= $publisher ?>.
+    </p>
 <?php endif ?>
 
 <?php if (isset($intext)): ?>
