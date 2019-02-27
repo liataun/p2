@@ -70,7 +70,7 @@ require 'logic.php';
     <div class="form-group">
         <label for='title'>Enter book title</label>
         <input type='text' class='form-control' id='title' name='title'
-               value='<?= sanitize($title ?? 'The Icy Bite of Love') ?>'>
+               value='<?= sanitize($title ?? 'The Icy Bite of Life') ?>'>
     </div>
 
     <div class="form-group">
@@ -120,8 +120,8 @@ require 'logic.php';
 <?php if (isset($citation)): ?>
     <?= $citation ?>
     <p>Building alternative way of building citation:</p>
-    <p class='text-success'><?= $authorLast ?><?php if ($authorType == 'single'): ?>, <?= $authorInitials ?><?php else: ?>. <?php endif ?>(<?= $year ?>).
-    <span id='italics'><?= $title ?>.</span> <?= $city ?>: <?= $publisher ?>.</p><?php endif ?>
+    <p class='text-success'><?= $authorLast ?><?php if ($authorType == 'single'): ?>, <?= $authorInitials ?> <?php else: ?>. <?php endif ?>(<?= $year ?>). <span id='italics'><?= $title ?>.</span> <?= $city ?>: <?= $publisher ?>.</p>
+<?php endif ?>
 
 <?php if (isset($intext)): ?>
     <p><?= $authorLast ?> (<?= $year ?>)</p>
