@@ -125,7 +125,7 @@ require 'logic.php';
     </p>
 <?php endif ?>
 
-<?php if (isset($intext)): ?>
+<?php if (isset($intext) and isset($citation)): ?>
     <p><?= $authorLast ?> (<?= $year ?>)</p>
 <?php endif ?>
 
