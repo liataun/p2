@@ -1,6 +1,6 @@
 # Project 2
 + By: Brian Twitchell
-+ Production URL: (http://p2.twitchell.com)
++ Production URL: (http://p2.twitchell.me)
 Project 2 for CSciE15 - Form use and validation in PHP
 
 ## Outside resources

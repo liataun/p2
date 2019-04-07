@@ -9,31 +9,23 @@ $form = new Form($_GET);
 //Run validations
 //Pick correct set based on Select element
 if ($form->isSubmitted()) {
+
+    $rules = [
+        'authorType' => 'required',
+        'authorLast' => 'required',
+        'year' => 'required|digit|minLength:4|maxLength:4',
+        'city' => 'required',
+        'publisher' => 'required',
+        'userEmail' => 'required|email',
+    ];
+
     if ($form->get('authorType') == 'organization') {
-        $errors = $form->validate(
-            [
-                'authorType' => 'required',
-                'authorLast' => 'required',
-                'authorInitials' => 'maxLength:0',
-                'year' => 'required|digit|minLength:4|maxLength:4',
-                'city' => 'required',
-                'publisher' => 'required',
-                'userEmail' => 'required|email',
-            ]
-        );
+        $rules['authorInitials'] = 'maxLength:0';
     } else {
-        $errors = $form->validate(
-            [
-                'authorType' => 'required',
-                'authorLast' => 'required',
-                'authorInitials' => 'required',
-                'year' => 'required|digit|minLength:4|maxLength:4',
-                'city' => 'required',
-                'publisher' => 'required',
-                'userEmail' => 'required|email',
-            ]
-        );
+        $rules['authorInitials'] = 'required';
     }
+
+    $errors = $form->validate($rules);
 }
 
 //setup values submitted by user to return to our index page
